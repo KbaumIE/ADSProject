@@ -1,0 +1,115 @@
+import math
+import scipy.spatial
+
+def questions():
+  print("Hello! We are here to help create better and more effective groups for projects.")
+  print("Please answer the following questions truthfully so groups can be created. Utilize a scale from 1 (Strongly Disagree) to 5 (Strongly Agree).\n")
+
+  when = str(input("Are you someone who likes to wait until the last minute to work on projects? "))
+
+  goal = str(input("\nIs your goal when completing a project to get a good grade and present something memorable? If your goal is to just turn it in put 1. "))
+
+  charge = str(input("\nDo you like to take charge in the project? If you prefer to follow instructions provided to you put 1. "))
+
+  participate = str(input("\nWhen participating in a project do you actively participate and evenly split the work? If you prefer others to do the body of the work and help when needed put 1. "))
+
+  organize = str(input("\nAre you an organized individual? "))
+  return ( "Your score is (" + when + "," + goal + "," + charge + "," + participate + "," + organize + ")")
+
+questions()
+
+members = dict()
+name = input("what is your name? ")
+score = input("Insert your score from the previous questions: (put comma then a space between numbers) ")# Expected Input: %, %, %, %, %
+
+
+members[name] = [int(i) for i in score.split(", ")] #ERRNO1
+
+print(members)
+
+
+def distance_calc(user, ourDict):
+    distances = dict()
+    userValues = ourDict[user]
+    userMagnitude = math.sqrt(sum([i ** 2 for i in userValues]))
+
+    for groupmate in ourDict:
+        if groupmate == user:
+            pass
+        else:
+            groupmateValues = ourDict[groupmate]
+
+            dotProduct = sum([i * j for i, j in zip(userValues, groupmateValues)])
+            groupmateMangnitude = math.sqrt(sum([i ** 2 for i in groupmateValues]))
+
+            radians = math.acos(dotProduct / (userMagnitude * groupmateMangnitude))
+
+            distances[groupmate] = [round(radians, 2)]
+
+    return distances
+
+"""
+In this part, we create a sample of randomly generated people (5).
+"""
+from random import randrange
+
+for i in ["Bo", "Bob", "Bobby", "Bobert", "Bobana"]:
+  members[i] = [randrange(1,5)] + [randrange(1,5)] + [randrange(1,5)] + [randrange(1,5)] + [randrange(1,5)]
+
+print(members)
+
+comparisons = distance_calc(name,members)
+print(comparisons)
+
+# Key: Radians, Eucledian Distance
+
+"""
+Sorting Algorithm
+
+
+We will now implement the quicksort Algorithm, first picking a pivot at random,
+then sorting from closest in similarity (cosine in radian, then breaking ties with magnitude (least))
+"""
+from random import randrange
+
+def extractValues(ourDict):
+  if type(ourDict) is dict:
+      return [ourDict[i][0] for i in ourDict]
+
+def quicksort(ourList):
+    if len(ourList) < 2:
+      return ourList
+    else:
+      pivot = randrange(len(ourList))
+      return quicksort([i for i in ourList if i < ourList[pivot]]) + [i for i in ourList if i == ourList[pivot]] + quicksort([i for i in ourList if i > ourList[pivot]])
+
+def reorder(dictionary, order, element):
+  newDict = dict()
+  while order != []:
+    for i in dictionary:
+      if order == []:
+        pass
+      elif dictionary[i][element] == order[0]:
+        newDict[i] = dictionary[i]
+        order.pop(0)
+  return newDict
+
+orderByAngle = quicksort(extractValues(comparisons))
+
+print(orderByAngle)
+
+nowReordered = reorder(comparisons, orderByAngle, 0)
+
+print(nowReordered)
+
+# Print Results
+n = int(input("Thanks for using our program, please input the number of people you need for your group project: "))
+
+groupMemberNames = []
+
+for x in list(nowReordered)[0:n]:
+  groupMemberNames.append(x)
+
+print("Here are your group members", groupMemberNames)
+
+
