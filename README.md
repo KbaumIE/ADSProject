@@ -11,3 +11,12 @@ User 2 Feedback:
 1. Visual Aesthetics of the program should be improved.
 2. Making the lines more spread out and clearly distinguishing between the background maths and the front end in terms of what is shown. 
 3. Maybe some visual representation in a GUI would aid the user experience.
+
+User 3 Feedback:
+-Making the instruction a bit more clear would benefit the algorithm, since I was confused at what to input.
+-The score should be done in a different way that makes the user input a 2 digit number rather than a list of numbers with commas and spaces.
+- Very useful tool
+
+User 4 Feedback:
+-The interface was a bit slow and I was a bit confused on what to run and what not to, but it became clear towards the end.
+-I experienced some errors with the first trials however the idea is great and if executed properly could benefit us students a lot.
