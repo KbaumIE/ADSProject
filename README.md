@@ -13,10 +13,10 @@ User 2 Feedback:
 3. Maybe some visual representation in a GUI would aid the user experience.
 
 User 3 Feedback:
--Making the instruction a bit more clear would benefit the algorithm, since I was confused at what to input.
--The score should be done in a different way that makes the user input a 2 digit number rather than a list of numbers with commas and spaces.
-- Very useful tool
+1. Making the instruction a bit more clear would benefit the algorithm, since I was confused at what to input.
+2. The score should be done in a different way that makes the user input a 2 digit number rather than a list of numbers with commas and spaces.
+3. Very useful tool
 
 User 4 Feedback:
--The interface was a bit slow and I was a bit confused on what to run and what not to, but it became clear towards the end.
--I experienced some errors with the first trials however the idea is great and if executed properly could benefit us students a lot.
+1. The interface was a bit slow and I was a bit confused on what to run and what not to, but it became clear towards the end.
+2. I experienced some errors with the first trials however the idea is great and if executed properly could benefit us students a lot.
